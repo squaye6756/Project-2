@@ -75,7 +75,8 @@ app.get('/coins', (req, res) => {
 app.get('/coins/new', (req, res) => {
     res.render('new.ejs');
 });
-app.post('/coins', (req, res) => { //create route
+//create route
+app.post('/coins', (req, res) => {
     req.body.year = parseInt(req.body.year);
     Coin.create(req.body, (err, newCoin) => {
         if (err) {

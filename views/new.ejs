@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <h1>Coin to Add</h1>
+        <form action="/coins" method="POST">
+            <label for="name">Coin Type</label>
+            <input type="text" name="name" id="name"/>
+            <label for="headImg">Image of Head</label>
+            <input type="text" name="headImg" id="headImg"/>
+            <label for="tailImg">Image of Tail</label>
+            <input type="text" name="tailImg" id="tailImg"/>
+            <label for="year">Coin Year</label>
+            <input type="number" name="year" id="year" min="1792" max="2021"/>
+            <label for="desc">How'd you come across this coin or anything you'd like to say about it</label>
+            <textarea name="desc" id="desc"></textarea>
+            <input type="submit" value="Add Coin"/>
+        </form>
+    </body>
+</html>

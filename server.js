@@ -71,6 +71,39 @@ app.get('/coins', (req, res) => {
     });
 });
 
+//new route
+app.get('/coins/new', (req, res) => {
+    res.render('new.ejs');
+});
+app.post('/coins', (req, res) => { //create route
+    req.body.year = parseInt(req.body.year);
+    Coin.create(req.body, (err, newCoin) => {
+        if (err) {
+            console.log(err.message);
+        } else {
+            res.redirect('/coins');
+        }
+    });
+});
+
+//show route
+app.get('/coins/:id', (req, res) => {
+    const coinId = req.params.id;
+    Coin.findById(coinId, (err, foundCoin) => {
+        if (err) {
+            console.log(err.message);
+        } else {
+            console.log(foundCoin);
+            res.render(
+                'show.ejs',
+                {
+                    coin: foundCoin
+                }
+            );
+        }
+    });
+});
+
 //___________________
 //Listener
 //___________________

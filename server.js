@@ -89,18 +89,46 @@ app.post('/coins', (req, res) => {
 //show route
 app.get('/coins/:id', (req, res) => {
     const coinId = req.params.id;
-    console.log('in show route');
     Coin.findById(coinId, (err, foundCoin) => {
         if (err) {
             console.log(err.message);
         } else {
-            console.log(foundCoin);
+            // console.log(foundCoin);
             res.render(
                 'show.ejs',
                 {
                     coin: foundCoin
                 }
             );
+        }
+    });
+});
+
+//edit route
+app.get('/coins/:id/edit', (req, res) => {
+    const coinId = req.params.id;
+    Coin.findById(coinId, (err, foundCoin) => {
+        if (err) {
+            console.log(err.message);
+        } else {
+            res.render(
+                'edit.ejs',
+                {
+                    coin: foundCoin
+                }
+            );
+        }
+    });
+});
+//update route
+app.put('/coins/:id', (req, res) => {
+    const coinId = req.params.id;
+    req.body.year = parseInt(req.body.year);
+    Coin.findByIdAndUpdate(coinId, req.body, (err, editedCoin) => {
+        if (err) {
+            console.log(err.message);
+        } else {
+            res.redirect(`/coins/${coinId}`);
         }
     });
 });

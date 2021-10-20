@@ -6,7 +6,9 @@ const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
-require('dotenv').config()
+require('dotenv').config();
+
+const Coin = require('./models/coins.js');
 //___________________
 //Port
 //___________________
@@ -50,6 +52,23 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 //localhost:3000
 app.get('/' , (req, res) => {
   res.send('Hello World!');
+});
+
+//index route
+app.get('/coins', (req, res) => {
+    Coin.find((err, allCoins) => {
+        if (err) {
+            console.log(err.message);
+        } else {
+            console.log(allCoins);
+            res.render(
+                'index.ejs',
+                {
+                    coinList: allCoins
+                }
+            );
+        }
+    });
 });
 
 //___________________

@@ -7,6 +7,9 @@
     <body>
         <a href="/coins">Return</a>
         <a href=/coins/<%=coin.id%>/edit>Edit Coin Information</a>
+        <form action="/coins/<%=coin.id%>?_method=DELETE" method="POST">
+            <input type="submit" value="Remove Coin">
+        </form>
         <h1>Coin Show Page</h1>
         <h2><%=coin.name%>: Year <%=coin.year%></h2>
         <img src=

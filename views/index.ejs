@@ -14,7 +14,10 @@
                 <% } else { %>
                     "<%=coin.headImg%>"
                 <% } %>
-                alt=""></a>
+            alt=""></a>
+            <form action="/coins/<%=coin.id%>?_method=DELETE" method="POST">
+                <input type="submit" value="Remove Coin">
+            </form>
         <% } %>
     </body>
 </html>

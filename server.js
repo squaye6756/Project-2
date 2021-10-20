@@ -133,6 +133,17 @@ app.put('/coins/:id', (req, res) => {
     });
 });
 
+app.delete('/coins/:id', (req, res) => {
+    const coinId = req.params.id;
+    Coin.findByIdAndDelete(coinId, (err, deletedCoin) => {
+        if (err) {
+            console.log(err.message);
+        } else {
+            res.redirect('/coins');
+        }
+    })
+});
+
 //___________________
 //Listener
 //___________________

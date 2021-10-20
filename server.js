@@ -60,7 +60,6 @@ app.get('/coins', (req, res) => {
         if (err) {
             console.log(err.message);
         } else {
-            console.log(allCoins);
             res.render(
                 'index.ejs',
                 {
@@ -90,6 +89,7 @@ app.post('/coins', (req, res) => {
 //show route
 app.get('/coins/:id', (req, res) => {
     const coinId = req.params.id;
+    console.log('in show route');
     Coin.findById(coinId, (err, foundCoin) => {
         if (err) {
             console.log(err.message);

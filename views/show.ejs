@@ -7,21 +7,21 @@
     <body>
         <a href="/coins">Return</a>
         <h1>Coin Show Page</h1>
-        <h2><%=coin.name:%> <%=coin.year%></h2>
+        <h2><%=coin.name%>: Year <%=coin.year%></h2>
         <img src=
             <% if (coin.headImg === "") { %>
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
             <% } else { %>
                 "<%=coin.headImg%>"
             <% } %>
-            alt="">
+        alt=""/>
         <img src=
             <% if (coin.tailImg === "") { %>
                 "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png"
             <% } else { %>
                 "<%=coin.tailImg%>"
             <% } %>
-            alt="">
+        alt=""/>
         <p>Desc: <%=coin.desc%></p>
         <p>When coin was added: <%=coin.createdAt%></p>
     </body>

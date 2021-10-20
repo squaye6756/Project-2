@@ -8,7 +8,7 @@
         <a href="/coins/new">Add Coin</a>
         <h1>Coin Index Page</h1>
         <% for (const coin of coinList) { %>
-            <a href="/store/<%=coin.id%>"><img src=
+            <a href="/coins/<%=coin.id%>"><img src=
                 <% if (coin.headImg === '') { %>
                     "https://www.pngall.com/wp-content/uploads/4/Dollar-Gold-Coin-PNG.png"
                 <% } else { %>

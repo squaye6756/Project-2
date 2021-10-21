@@ -45,104 +45,10 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
-
-//___________________
-// Routes
-//___________________
-//localhost:3000
-app.get('/' , (req, res) => {
-  res.redirect('/coins');
-});
-
-//index route
-app.get('/coins', (req, res) => {
-    Coin.find((err, allCoins) => {
-        if (err) {
-            console.log(err.message);
-        } else {
-            res.render(
-                'index.ejs',
-                {
-                    coinList: allCoins
-                }
-            );
-        }
-    });
-});
-
-//new route
-app.get('/coins/new', (req, res) => {
-    res.render('new.ejs');
-});
-//create route
-app.post('/coins', (req, res) => {
-    req.body.year = parseInt(req.body.year);
-    Coin.create(req.body, (err, newCoin) => {
-        if (err) {
-            console.log(err.message);
-        } else {
-            res.redirect('/coins');
-        }
-    });
-});
-
-//show route
-app.get('/coins/:id', (req, res) => {
-    const coinId = req.params.id;
-    Coin.findById(coinId, (err, foundCoin) => {
-        if (err) {
-            console.log(err.message);
-        } else {
-            // console.log(foundCoin);
-            res.render(
-                'show.ejs',
-                {
-                    coin: foundCoin
-                }
-            );
-        }
-    });
-});
-
-//edit route
-app.get('/coins/:id/edit', (req, res) => {
-    const coinId = req.params.id;
-    Coin.findById(coinId, (err, foundCoin) => {
-        if (err) {
-            console.log(err.message);
-        } else {
-            res.render(
-                'edit.ejs',
-                {
-                    coin: foundCoin
-                }
-            );
-        }
-    });
-});
-//update route
-app.put('/coins/:id', (req, res) => {
-    const coinId = req.params.id;
-    req.body.year = parseInt(req.body.year);
-    Coin.findByIdAndUpdate(coinId, req.body, (err, editedCoin) => {
-        if (err) {
-            console.log(err.message);
-        } else {
-            res.redirect(`/coins/${coinId}`);
-        }
-    });
-});
-
-app.delete('/coins/:id', (req, res) => {
-    const coinId = req.params.id;
-    Coin.findByIdAndDelete(coinId, (err, deletedCoin) => {
-        if (err) {
-            console.log(err.message);
-        } else {
-            res.redirect('/coins');
-        }
-    })
-});
+//controllers
+//connects with coins_controller.js
+const coinsController = require('./controllers/coins_controller.js');
+app.use('/coins', coinsController);
 
 //___________________
 //Listener

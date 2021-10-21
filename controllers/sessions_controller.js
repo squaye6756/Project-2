@@ -22,7 +22,7 @@ sessions.post('/logging_in', (req, res) => {
         } else {
             if (bcrypt.compareSync(req.body.password, foundUser.password)) {
                 req.session.currentUser = foundUser;
-                console.log(req.session.currentUser);
+                // console.log(req.session.currentUser);
                 res.redirect('/coins');
             } else {
                 res.send("<a href='/'>Password doesn't match</a>");

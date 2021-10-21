@@ -3,30 +3,43 @@
     <head>
         <meta charset="utf-8">
         <title></title>
+        <link rel="stylesheet" href="css/index.css">
     </head>
     <body>
-        <a href="/coins/new">Add Coin</a>
-        <% if (currentUser) { %>
-            <p>Welcome, <%=currentUser.username%></p>
-            <form action="/sessions/logging_out?_method=DELETE" method="POST">
-                <input type="submit" value="Log Out"/>
-            </form>
-        <% } else { %>
-            <a href="/users/new">Sign Up</a>
-            <a href="/sessions/new">Log In</a>
-        <% } %>
+        <div class="head-info">
+            <div class="add-coin">
+                <a href="/coins/new">Add Coin</a>
+            </div>
+            <div class="user-options">
+            <% if (currentUser) { %>
+                <div class="user-greeting">
+                    <p>Welcome, <%=currentUser.username%></p>
+                    <form action="/sessions/logging_out?_method=DELETE" method="POST">
+                        <input type="submit" value="Log Out"/>
+                    </form>
+                </div>
+            <% } else { %>
+                <a href="/users/new">Sign Up</a>
+                <a href="/sessions/new">Log In</a>
+            <% } %>
+            </div>
+        </div>
         <h1>Coin Index Page</h1>
-        <% for (const coin of coinList) { %>
-            <a href="/coins/<%=coin.id%>"><img src=
-                <% if (coin.headImg === '') { %>
-                    "https://www.pngall.com/wp-content/uploads/4/Dollar-Gold-Coin-PNG.png"
-                <% } else { %>
-                    "<%=coin.headImg%>"
-                <% } %>
-            alt=""></a>
-            <form action="/coins/<%=coin.id%>?_method=DELETE" method="POST">
-                <input type="submit" value="Remove Coin">
-            </form>
-        <% } %>
+        <div class="coin-container">
+            <% for (const coin of coinList) { %>
+                <div class="coin-individual">
+                    <a href="/coins/<%=coin.id%>"><img class='img-link' src=
+                        <% if (coin.headImg === '') { %>
+                            "https://www.pngall.com/wp-content/uploads/4/Dollar-Gold-Coin-PNG.png"
+                        <% } else { %>
+                            "<%=coin.headImg%>"
+                        <% } %>
+                    alt=""></a>
+                    <form action="/coins/<%=coin.id%>?_method=DELETE" method="POST">
+                        <input type="submit" value="Remove Coin">
+                    </form>
+                </div>
+            <% } %>
+        </div>
     </body>
 </html>

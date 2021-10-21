@@ -45,6 +45,11 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
+// localhost:3000
+app.get('/' , (req, res) => {
+  res.redirect('/coins');
+});
+
 //controllers
 //connects with coins_controller.js
 const coinsController = require('./controllers/coins_controller.js');

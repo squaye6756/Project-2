@@ -7,10 +7,6 @@ module.exports = router;
 //___________________
 // Routes
 //___________________
-//localhost:3000
-// router.get('/' , (req, res) => {
-//   res.redirect('/coins');
-// });
 
 //index route
 router.get('/', (req, res) => {

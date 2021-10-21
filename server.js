@@ -7,6 +7,7 @@ const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
 require('dotenv').config();
+const session = require('express-session');
 
 const Coin = require('./models/coins.js');
 //___________________
@@ -45,6 +46,14 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
+app.use(
+    session({
+        secret: process.env.SECRET,
+        resave: false,
+        saveUninitialized: false
+    });
+)
+
 // localhost:3000
 app.get('/' , (req, res) => {
   res.redirect('/coins');
@@ -54,9 +63,12 @@ app.get('/' , (req, res) => {
 //connects with coins_controller.js
 const coinsController = require('./controllers/coins_controller.js');
 app.use('/coins', coinsController);
-//connects with sessions_controller.js
+//connects with users_controller.js
 const usersController = require('./controllers/users_controller.js');
 app.use('/users', usersController);
+//connects with sessions_controller.js
+const sessionsController = require('./controllers/sessions_controller.js');
+app.use('/sessions', sessionsController);
 
 //___________________
 //Listener

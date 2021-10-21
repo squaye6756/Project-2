@@ -50,10 +50,13 @@ app.get('/' , (req, res) => {
   res.redirect('/coins');
 });
 
-//controllers
+//connections to controllers in controllers folder
 //connects with coins_controller.js
 const coinsController = require('./controllers/coins_controller.js');
 app.use('/coins', coinsController);
+//connects with sessions_controller.js
+const usersController = require('./controllers/users_controller.js');
+app.use('/users', usersController);
 
 //___________________
 //Listener

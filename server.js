@@ -51,7 +51,7 @@ app.use(
         secret: process.env.SECRET,
         resave: false,
         saveUninitialized: false
-    });
+    })
 )
 
 // localhost:3000

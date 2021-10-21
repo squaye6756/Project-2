@@ -4,6 +4,14 @@ const Coin = require('../models/coins.js');
 
 module.exports = router;
 
+const isLoggedIn = (req, res, next) => {
+    if (req.session.currentUser) {
+        return next();
+    } else {
+        res.redirect('/sessions/new');
+    }
+}
+
 //___________________
 // Routes
 //___________________
@@ -17,7 +25,8 @@ router.get('/', (req, res) => {
             res.render(
                 'index.ejs',
                 {
-                    coinList: allCoins
+                    coinList: allCoins,
+                    currentUser: req.session.currentUser
                 }
             );
         }

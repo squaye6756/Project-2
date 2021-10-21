@@ -52,7 +52,7 @@ app.use(
         resave: false,
         saveUninitialized: false
     })
-)
+);
 
 // localhost:3000
 app.get('/' , (req, res) => {

@@ -34,7 +34,7 @@ router.get('/', (req, res) => {
 });
 
 //new route
-router.get('/new', (req, res) => {
+router.get('/new', isLoggedIn, (req, res) => {
     res.render('new.ejs');
 });
 //create route
@@ -50,7 +50,7 @@ router.post('/', (req, res) => {
 });
 
 //show route
-router.get('/:id', (req, res) => {
+router.get('/:id', isLoggedIn, (req, res) => {
     const coinId = req.params.id;
     Coin.findById(coinId, (err, foundCoin) => {
         if (err) {
@@ -96,7 +96,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', isLoggedIn, (req, res) => {
     const coinId = req.params.id;
     Coin.findByIdAndDelete(coinId, (err, deletedCoin) => {
         if (err) {

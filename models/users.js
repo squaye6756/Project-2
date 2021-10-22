@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
-// //connects with Coin model
-// const Coin = require('./coins.js');
+//connects with Coin model
+const Coin = require('./coins.js');
 
 const userSchema = new mongoose.Schema(
     {
         username: {type:String, unique:true, required:true},
         password: String,
         public: {type:Boolean, required:true},
-        coins: []
+        coins: [Coin.schema]
     }
 );
 

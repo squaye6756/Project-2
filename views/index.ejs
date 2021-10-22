@@ -26,9 +26,9 @@
         </div>
         <h1>Coin Index Page</h1>
         <div class="coin-container">
-            <% for (const coin of coinList) { %>
+            <% for (const coin of currentUser.coins) { %>
                 <div class="coin-individual">
-                    <a href="/coins/<%=coin.id%>"><img class='img-link' src=
+                    <a href="/coins/<%=coin._id%>"><img class='img-link' src=
                         <% if (coin.headImg === '') { %>
                             "https://www.pngall.com/wp-content/uploads/4/Dollar-Gold-Coin-PNG.png"
                         <% } else { %>

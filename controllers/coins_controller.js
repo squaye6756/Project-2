@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Coin = require('../models/coins.js');
+const User = require('../models/users.js');
 
 module.exports = router;
 
@@ -25,7 +26,7 @@ router.get('/', isLoggedIn, (req, res) => {
             res.render(
                 'index.ejs',
                 {
-                    coinList: allCoins,
+                    // coinList: allCoins,
                     currentUser: req.session.currentUser
                 }
             );
@@ -35,17 +36,29 @@ router.get('/', isLoggedIn, (req, res) => {
 
 //new route
 router.get('/new', isLoggedIn, (req, res) => {
-    res.render('new.ejs');
+    res.render(
+        'new.ejs',
+        {
+            currentUser: req.session.currentUser
+        }
+    );
 });
 //create route
 router.post('/', (req, res) => {
     req.body.year = parseInt(req.body.year);
-    Coin.create(req.body, (err, newCoin) => {
-        if (err) {
-            console.log(err.message);
-        } else {
-            res.redirect('/coins');
-        }
+    User.findById(req.session.currentUser._id, (err, currCollector) => {
+        // console.log('user found\n',currCollector);
+        Coin.create(req.body, (err, newCoin) => {
+            if (err) {
+                console.log(err.message);
+            } else {
+                // console.log('user still found\n',currCollector);
+                currCollector.coins.push(newCoin);
+                currCollector.save((err, data) => {
+                    res.redirect('/coins');
+                });
+            }
+        });
     });
 });
 
@@ -56,7 +69,7 @@ router.get('/:id', isLoggedIn, (req, res) => {
         if (err) {
             console.log(err.message);
         } else {
-            // console.log(foundCoin);
+            // console.log('show route', foundCoin);
             res.render(
                 'show.ejs',
                 {

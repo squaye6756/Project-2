@@ -109,13 +109,24 @@ router.put('/:id', (req, res) => {
     });
 });
 
+//delete route
 router.delete('/:id', isLoggedIn, (req, res) => {
     const coinId = req.params.id;
     Coin.findByIdAndDelete(coinId, (err, deletedCoin) => {
         if (err) {
             console.log(err.message);
         } else {
-            res.redirect('/coins');
+            const userId = req.session.currentUser._id;
+            User.findById(userId, (err, currCollector) => {
+                if (err) {
+                    console.log(err.message);
+                } else {
+                    currCollector.coins.id(coinId).remove();
+                    currCollector.save((err, data) => {
+                        res.redirect('/coins');
+                    });
+                }
+            });
         }
-    })
+    });
 });

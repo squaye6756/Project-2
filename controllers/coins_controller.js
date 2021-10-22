@@ -26,7 +26,6 @@ router.get('/', isLoggedIn, (req, res) => {
             res.render(
                 'index.ejs',
                 {
-                    // coinList: allCoins,
                     currentUser: req.session.currentUser
                 }
             );

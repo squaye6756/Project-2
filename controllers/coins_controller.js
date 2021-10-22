@@ -17,7 +17,7 @@ const isLoggedIn = (req, res, next) => {
 //___________________
 
 //index route
-router.get('/', (req, res) => {
+router.get('/', isLoggedIn, (req, res) => {
     Coin.find((err, allCoins) => {
         if (err) {
             console.log(err.message);

@@ -33,7 +33,7 @@ sessions.post('/logging_in', (req, res) => {
 
 sessions.delete('/logging_out', (req, res) => {
     req.session.destroy(() => {
-        res.redirect('/coins');
+        res.redirect('/home');
     });
 })
 

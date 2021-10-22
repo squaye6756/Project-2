@@ -56,7 +56,10 @@ app.use(
 
 // localhost:3000
 app.get('/' , (req, res) => {
-  res.redirect('/coins');
+  res.redirect('/home');
+});
+app.get('/home', (req, res) => {
+    res.render('home.ejs');
 });
 
 //connections to controllers in controllers folder

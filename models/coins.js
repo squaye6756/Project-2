@@ -11,7 +11,7 @@ const coinSchema = new mongoose.Schema (
     {timestamps: true}
 );
 
-//create database 'logs' in mongo
+//create database 'coins' in mongo
 const Coin = mongoose.model('coins', coinSchema);
 
 module.exports = Coin;

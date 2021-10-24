@@ -19,7 +19,10 @@ const isLoggedIn = (req, res, next) => {
 
 //index route
 router.get('/', isLoggedIn, (req, res) => {
+    console.log('index get route');
     Coin.find((err, allCoins) => {
+        console.log('in coins (find)');
+        console.log(req.session.currentUser.coins);
         if (err) {
             console.log(err.message);
         } else {
@@ -57,6 +60,7 @@ router.post('/', (req, res) => {
                 currCollector.coins.push(newCoin);
                 currCollector.save((err, data) => {
                     console.log('in save');
+                    console.log(req.session.currentUser.coins);
                     console.log('to redirect');
                     res.redirect('/coins');
                     console.log('leaving save');

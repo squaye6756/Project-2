@@ -46,15 +46,40 @@ router.get('/new', isLoggedIn, (req, res) => {
 router.post('/', (req, res) => {
     req.body.year = parseInt(req.body.year);
     User.findById(req.session.currentUser._id, (err, currCollector) => {
+        console.log('in find');
         // console.log('user found\n',currCollector);
         Coin.create(req.body, (err, newCoin) => {
+            console.log('in create');
             if (err) {
                 console.log(err.message);
             } else {
                 // console.log('user still found\n',currCollector);
                 currCollector.coins.push(newCoin);
                 currCollector.save((err, data) => {
+                    console.log('in save');
+                    console.log('to redirect');
                     res.redirect('/coins');
+                    console.log('leaving save');
+                    // Coin.find((err, allCoins) => {
+                    //     if (err) {
+                    //         console.log(err.message);
+                    //     } else {
+                    //         res.render(
+                    //             'index.ejs',
+                    //             {
+                    //                 currentUser: req.session.currentUser
+                    //             }
+                    //         );
+                    //     }
+                    // });
+                    // // res.render(
+                    // //     'index.ejs',
+                    // //     {
+                    // //         currentUser: req.session.currentUser
+                    // //     }
+                    // // )
+                    // res.send("<p>Coin added successfully</p><a href='/coins'>Return to Collection</a>");
+                    // // res.redirect('/coins');
                 });
             }
         });
@@ -122,7 +147,15 @@ router.delete('/:id', isLoggedIn, (req, res) => {
                 } else {
                     currCollector.coins.id(coinId).remove();
                     currCollector.save((err, data) => {
-                        res.redirect('/coins');
+                        // res.render(
+                        //     'index.ejs',
+                        //     {
+                        //         currentUser: req.session.currentUser
+                        //     }
+                        // )
+                        console.log(currCollector.coins);
+                        res.send("<p>Coin removed successfully</p><a href='/coins'>Return to Collection</a>");
+                        // res.redirect('/coins');
                     });
                 }
             });

@@ -1,0 +1,21 @@
+.heading {
+    display: flex;
+    justify-content: space-between;
+}
+.coin-body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.coin-img {
+    height: 200px;
+    width: 200px;
+}
+.coin-foot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1 {
+    text-align: center;
+}

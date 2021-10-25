@@ -1,0 +1,15 @@
+.img {
+    height: 100px;
+    width: 100px;
+}
+.row {
+    display: flex;
+    justify-content: center;
+}
+.row div, .row img {
+    margin: 10px;
+}
+.home-container {
+    margin: auto;
+    text-align: center;
+}

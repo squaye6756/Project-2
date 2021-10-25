@@ -19,10 +19,10 @@ const isLoggedIn = (req, res, next) => {
 
 //index route
 router.get('/', isLoggedIn, (req, res) => {
-    console.log('index get route');
+    // console.log('index get route');
     Coin.find((err, allCoins) => {
-        console.log('in coins (find)');
-        console.log(req.session.currentUser.coins);
+        // console.log('in coins (find)');
+        // console.log(req.session.currentUser.coins);
         if (err) {
             console.log(err.message);
         } else {
@@ -49,49 +49,63 @@ router.get('/new', isLoggedIn, (req, res) => {
 router.post('/', (req, res) => {
     req.body.year = parseInt(req.body.year);
     User.findById(req.session.currentUser._id, (err, currCollector) => {
-        console.log('in find');
-        // console.log('user found\n',currCollector);
-        Coin.create(req.body, (err, newCoin) => {
-            console.log('in create');
-            if (err) {
-                console.log(err.message);
-            } else {
-                // console.log('user still found\n',currCollector);
-                currCollector.coins.push(newCoin);
-                currCollector.save((err, data) => {
-                    console.log('in save');
-                    console.log(req.session.currentUser.coins);
-                    console.log('to redirect');
-                    res.redirect('/coins');
-                    console.log('leaving save');
-                    // Coin.find((err, allCoins) => {
-                    //     if (err) {
-                    //         console.log(err.message);
-                    //     } else {
-                    //         res.render(
-                    //             'index.ejs',
-                    //             {
-                    //                 currentUser: req.session.currentUser
-                    //             }
-                    //         );
-                    //     }
-                    // });
-                    // // res.render(
-                    // //     'index.ejs',
-                    // //     {
-                    // //         currentUser: req.session.currentUser
-                    // //     }
-                    // // )
-                    // res.send("<p>Coin added successfully</p><a href='/coins'>Return to Collection</a>");
-                    // // res.redirect('/coins');
-                });
-            }
-        });
+        if (err) {
+            console.log(err.message);
+        } else {
+            // console.log('in find');
+            // console.log('user found\n',currCollector);
+            Coin.create(req.body, (err, newCoin) => {
+                // console.log('in create');
+                if (err) {
+                    console.log(err.message);
+                } else {
+                    // console.log('user still found\n',currCollector);
+                    currCollector.coins.push(newCoin);
+                    currCollector.save((err, data) => {
+                        console.log('data', data);
+                        req.session.currentUser = data;
+                        res.redirect('/coins');
+                        // res.render(
+                        //     'index.ejs',
+                        //     {
+                        //         currentUser: data
+                        //     }
+                        // )
+                        // console.log('in save');
+                        // console.log(req.session.currentUser.coins);
+                        // console.log('to redirect');
+                        // res.redirect('/coins');
+                        // console.log('leaving save');
+                        // Coin.find((err, allCoins) => {
+                        //     if (err) {
+                        //         console.log(err.message);
+                        //     } else {
+                        //         res.render(
+                        //             'index.ejs',
+                        //             {
+                        //                 currentUser: req.session.currentUser
+                        //             }
+                        //         );
+                        //     }
+                        // });
+                        // // res.render(
+                        // //     'index.ejs',
+                        // //     {
+                        // //         currentUser: req.session.currentUser
+                        // //     }
+                        // // )
+                        // res.send("<p>Coin added successfully</p><a href='/coins'>Return to Collection</a>");
+                        // // res.redirect('/coins');
+                    });
+                }
+            });
+        }
     });
 });
 
 //show route
 router.get('/:id', isLoggedIn, (req, res) => {
+    // console.log('current user', req.session.currentUser);
     const coinId = req.params.id;
     Coin.findById(coinId, (err, foundCoin) => {
         if (err) {
@@ -151,15 +165,9 @@ router.delete('/:id', isLoggedIn, (req, res) => {
                 } else {
                     currCollector.coins.id(coinId).remove();
                     currCollector.save((err, data) => {
-                        // res.render(
-                        //     'index.ejs',
-                        //     {
-                        //         currentUser: req.session.currentUser
-                        //     }
-                        // )
-                        console.log(currCollector.coins);
-                        res.send("<p>Coin removed successfully</p><a href='/coins'>Return to Collection</a>");
-                        // res.redirect('/coins');
+                        // console.log('data', data);
+                        req.session.currentUser = data;
+                        res.redirect('/coins');
                     });
                 }
             });

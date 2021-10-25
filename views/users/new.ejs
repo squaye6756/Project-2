@@ -7,16 +7,30 @@
     </head>
     <body>
         <h1>Sign Up</h1>
-        <form action="/users/sign_up" method="POST">
-            <label for="username">Username: </label>
-            <input type="text" name="username" id="username"/>
-            <label for="password">Password: </label>
-            <input type="password" name="password" id="password"/>
-            <label for="public">Would you like to be publicly visible?</label>
-            <input type="checkbox" name="public" id="public"/>
-            <input type="submit" value="Submit"/>
-        </form>
-        <a href="/home">Home</a>
-        <a href="/sessions/new">Log In</a>
+        <div class="signup">
+            <div class="credentials">
+                <form action="/users/sign_up" method="POST">
+                    <div>
+                        <label for="username">Username: </label>
+                        <input type="text" name="username" id="username"/>
+                    </div>
+                    <div>
+                        <label for="password">Password: </label>
+                        <input type="password" name="password" id="password"/>
+                    </div>
+                    <div>
+                        <label for="public">Would you like to be publicly visible?</label>
+                        <input type="checkbox" name="public" id="public"/>
+                    </div>
+                    <div>
+                        <input type="submit" value="Submit"/>
+                    </div>
+                </form>
+                <div class="links">
+                    <a href="/home">Home</a>
+                    <a href="/sessions/new">Log In</a>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

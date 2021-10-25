@@ -1,13 +1,13 @@
 body {
-    background-color: #0047ab;
+    background-color: mediumseagreen;
 }
 h1 {
     text-align: center;
     font-family: 'Pacifico';
-    color: #395df6;
+    color: #35fb9c;
 }
-.login {
-    background-image: url('../../images/logindime.png');
+.signup {
+    background-image: url('../../images/loginpenny.png');
     background-size: 500px;
     background-position: center;
     background-repeat: no-repeat;
@@ -31,25 +31,25 @@ form div {
 }
 label {
     font-weight: bold;
-    background-color: #2a9c8e;
-    background-color: rgba(42,156,131,.8); /*https://stackoverflow.com/questions/15449280/making-text-background-transparent-but-not-text-itself*/
-    color: #395d77;
+    background-color: #2e8b57;
+    background-color: rgba(46,139,37,.5);
+    color: #77d593;
 }
 [type='submit'] {
-    background-color: #2a9c8e;
+    background-color: #2e8b57;
 }
 a {
     padding: 25px;
-    background-color: #1b3128;
-    color: #395d77;
-    border: 1px solid #2a9c8e;
+    background-color: #77d593;
+    color: #ca6c46;
+    border: 1px solid #2e8b57;
     border-radius: 50%;
     text-decoration: none;
 }
 a:hover {
-    background-color: #2a9c8e;
-    color: #1b3128;
-    border: 1px solid #395d77;
+    background-color: #2e8b57;
+    color: #77d593;
+    border: 1px solid #ca6c46;
     font-weight: bold;
     font-family: 'Mukta', sans-serif;
 }

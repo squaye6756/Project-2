@@ -1,12 +1,17 @@
+body {
+    background-color: #0047AB;
+}
 h1 {
     text-align: center;
+    font-family: 'Pacifico';
+    color: #395df6;
 }
 .login {
     background-image: url('../../images/logindime.png');
-    background-size: 250px;
+    background-size: 500px;
     background-position: center;
     background-repeat: no-repeat;
-    height: 250px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,4 +28,27 @@ form div {
 .links {
     display: flex;
     justify-content: space-around;
+}
+label {
+    font-weight: bold;
+    background-color: #2a9c8e;
+    color: #395d77;
+}
+[type='submit'] {
+    background-color: #2a9c8e;
+}
+a {
+    padding: 25px;
+    background-color: #1b3128;
+    color: #395d77;
+    border: 1px solid #2a9c8e;
+    border-radius: 50%;
+    text-decoration: none;
+}
+a:hover {
+    background-color: #2a9c8e;
+    color: #1b3128;
+    border: 1px solid #395d77;
+    font-weight: bold;
+    font-family: 'Mukta', sans-serif;
 }

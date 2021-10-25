@@ -62,40 +62,9 @@ router.post('/', (req, res) => {
                     // console.log('user still found\n',currCollector);
                     currCollector.coins.push(newCoin);
                     currCollector.save((err, data) => {
-                        console.log('data', data);
+                        // console.log('data', data);
                         req.session.currentUser = data;
                         res.redirect('/coins');
-                        // res.render(
-                        //     'index.ejs',
-                        //     {
-                        //         currentUser: data
-                        //     }
-                        // )
-                        // console.log('in save');
-                        // console.log(req.session.currentUser.coins);
-                        // console.log('to redirect');
-                        // res.redirect('/coins');
-                        // console.log('leaving save');
-                        // Coin.find((err, allCoins) => {
-                        //     if (err) {
-                        //         console.log(err.message);
-                        //     } else {
-                        //         res.render(
-                        //             'index.ejs',
-                        //             {
-                        //                 currentUser: req.session.currentUser
-                        //             }
-                        //         );
-                        //     }
-                        // });
-                        // // res.render(
-                        // //     'index.ejs',
-                        // //     {
-                        // //         currentUser: req.session.currentUser
-                        // //     }
-                        // // )
-                        // res.send("<p>Coin added successfully</p><a href='/coins'>Return to Collection</a>");
-                        // // res.redirect('/coins');
                     });
                 }
             });

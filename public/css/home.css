@@ -13,3 +13,32 @@
     margin: auto;
     text-align: center;
 }
+.row-two {
+    align-items: center;
+}
+.move-on {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 0 !important;
+}
+body {
+    background: beige;
+}
+h1 {
+    font-family: 'Pacifico', cursive;
+    color: #395d77;
+}
+a {
+    padding: 25px;
+    background-color: #af2d19;
+    border-radius: 50%;
+    border: 1px solid green;
+    text-decoration: none;
+    color: #fc6bcd;
+}
+a:hover {
+    background-color: #dcb6cf;
+    color: #af2d19;
+    font-weight: bold;
+    font-family: 'Mukta', sans-serif;
+}

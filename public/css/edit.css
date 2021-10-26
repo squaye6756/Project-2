@@ -1,0 +1,37 @@
+body {
+    background-color: #363ac9/*#272a91*/;
+}
+h1 {
+    text-align: center;
+    font-family: 'Bebas Neue', cursive;
+    color: #d22f7d;
+}
+.edit-coin {
+    display: flex;
+    justify-content: center;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-item {
+    margin: 10px;
+}
+#description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+a {
+    color: #17feb5;
+    background-color: #51a6f9;
+    border: 1px solid #a42fd1;
+    padding: 2px;
+    text-decoration: none;
+}
+a:hover {
+    color: #a42fd1;
+    background-color: #17feb5;
+    border: 1px solid #51a6f9;
+}

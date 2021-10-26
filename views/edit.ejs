@@ -3,22 +3,42 @@
     <head>
         <meta charset="utf-8">
         <title></title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="stylesheet" href="/css/edit.css">
     </head>
     <body>
         <a href="/coins/<%=coin.id%>">Return to Coin</a>
-        <h1>Edit Coin</h1>
-        <form action="/coins/<%=coin.id%>?_method=PUT" method="POST">
-            <label for="name">Coin Type</label>
-            <input type="text" name="name" id="name" value="<%=coin.name%>"/>
-            <label for="headImg">Image of Head</label>
-            <input type="text" name="headImg" id="headImg" value="<%=coin.headImg%>"/>
-            <label for="tailImg">Image of Tail</label>
-            <input type="text" name="tailImg" id="tailImg" value="<%=coin.tailImg%>"/>
-            <label for="year">Coin Year</label>
-            <input type="number" name="year" id="year" min="1792" max="2021" value="<%=coin.year%>"/>
-            <label for="desc">How'd you come across this coin or anything you'd like to say about it</label>
-            <textarea name="desc" id="desc"><%=coin.desc%></textarea>
-            <input type="submit" value="Finish Editing Coins"/>
-        </form>
+        <h1><u>Edit Coin</u></h1>
+        <div class="edit-coin">
+            <form action="/coins/<%=coin.id%>?_method=PUT" method="POST">
+                <div class="form-item">
+                    <label for="name">Coin Type</label>
+                    <input type="text" name="name" id="name" value="<%=coin.name%>"/>
+                </div>
+                <div class="form-item">
+                    <label for="headImg">Image of Head</label>
+                    <input type="text" name="headImg" id="headImg" value="<%=coin.headImg%>"/>
+                </div>
+                <div class="form-item">
+                    <label for="tailImg">Image of Tail</label>
+                    <input type="text" name="tailImg" id="tailImg" value="<%=coin.tailImg%>"/>
+                </div>
+                <div class="form-item">
+                    <label for="year">Coin Year</label>
+                    <input type="number" name="year" id="year" min="1792" max="2021" value="<%=coin.year%>"/>
+                </div>
+                <div id='description' class="form-item">
+                    <div>
+                        <label for="desc">How'd you come across this coin or anything you'd like to say about it</label>
+                    </div>
+                    <div>
+                        <textarea name="desc" id="desc"><%=coin.desc%></textarea>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <input type="submit" value="Finish Editing Coins"/>
+                </div>
+            </form>
+        </div>
     </body>
 </html>

@@ -1,3 +1,6 @@
+body {
+    background-color: #16ce99;
+}
 .heading {
     display: flex;
     justify-content: space-between;
@@ -18,4 +21,27 @@
 }
 h1 {
     text-align: center;
+    color: #a944ca;
+    font-family: 'Irish Grover', cursive;
+}
+h2 {
+    font-family: 'Zen Kurenaido', sans-serif;
+    color: #8d43e9;
+}
+.heading a {
+    color: #f26343;
+    background-color: #0000ee;
+    border: 1px solid #313984;
+    text-decoration: none;
+    padding: 2px;
+}
+.heading a:hover {
+    color: #313984;
+    background-color: #f26343;
+    border: 1px solid #0000ee;
+}
+.coin-foot p {
+    color: #32364f;
+    color: #0036ee;
+    font-family: 'Inconsolata', monospace;
 }

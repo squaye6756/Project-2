@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title></title>
+        <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200&family=Pacifico&family=Share+Tech+Mono&family=Zen+Kurenaido&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/css/show.css">
     </head>
     <body>
@@ -10,11 +11,11 @@
             <a href="/coins">Return to Collection</a>
             <a href=/coins/<%=coin._id%>/edit>Edit Coin Information</a>
         </div>
-        <h1>Coin Show Page</h1>
+        <h1><%=coin.name%></h1>
         <div class="coin-body">
             <div class="coin-intro">
-                <h2><%=coin.name%>:</h2>
-                <h2>Year <%=coin.year%></h2>
+                <h2>Year:</h2>
+                <h2><%=coin.year%></h2>
             </div>
             <img class='coin-img' src=
                 <% if (coin.headImg === "") { %>

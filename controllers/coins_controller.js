@@ -48,6 +48,14 @@ router.get('/new', isLoggedIn, (req, res) => {
 //create route
 router.post('/', (req, res) => {
     req.body.year = parseInt(req.body.year);
+    const rightNow = new Date();
+    const yr = rightNow.getFullYear();
+    const mo = rightNow.getMonth() + 1;
+    const day = rightNow.getDate();
+    const hr = rightNow.getHours();
+    const min = rightNow.getMinutes();
+    const creationDate = `${mo}-${day}-${yr} @ ${hr}:${min}`;
+    req.body.created_at = creationDate;
     User.findById(req.session.currentUser._id, (err, currCollector) => {
         if (err) {
             console.log(err.message);

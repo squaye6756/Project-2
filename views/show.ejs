@@ -34,7 +34,7 @@
         </div>
         <div class="coin-foot">
             <p>Desc: <%=coin.desc%></p>
-            <p>When coin was added: <%=coin.createdAt%></p>
+            <p>When coin was added: <%=coin.created_at%></p>
             <form action="/coins/<%=coin._id%>?_method=DELETE" method="POST">
                 <input type="submit" value="Remove Coin">
             </form>

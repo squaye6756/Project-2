@@ -6,7 +6,8 @@ const coinSchema = new mongoose.Schema (
         headImg: String,
         tailImg: String,
         year: Number,
-        desc: String
+        desc: String,
+        created_at: String
     },
     {timestamps: true}
 );

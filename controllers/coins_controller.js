@@ -152,7 +152,7 @@ router.delete('/:id', isLoggedIn, (req, res) => {
     });
 });
 
-router.get('/browse', (req, res) => {
+router.get('/browse/browse/browse', (req, res) => {
     User.find({public:true}, (err, publicUsers) => {
         if (err) {
             console.log(err.message);

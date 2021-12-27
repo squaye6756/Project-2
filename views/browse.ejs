@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="/css/browse.css">
+    </head>
+    <body>
+        <h1>Browse These Collections</h1>
+        <div class="userlist">
+            <% for (const user of publicUsers) { %>
+                <div class="user">
+                    <a href="#"><%=user.username%></a>
+                </div>
+            <% } %>
+        </div>
+    </body>
+</html>

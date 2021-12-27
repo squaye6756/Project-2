@@ -151,3 +151,19 @@ router.delete('/:id', isLoggedIn, (req, res) => {
         }
     });
 });
+
+router.get('/browse', (req, res) => {
+    User.find({public:true}, (err, publicUsers) => {
+        if (err) {
+            console.log(err.message);
+        } else {
+            res.render(
+                'browse.ejs',
+                {
+                    // currentUser: req.session.currentUser,
+                    publicUsers: publicUsers
+                }
+            );
+        }
+    });
+});

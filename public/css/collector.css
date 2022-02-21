@@ -1,0 +1,47 @@
+body {
+    background-color: /*beige*/#e9916c;
+}
+
+.head-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.return a {
+    color: #6c199e;
+    background-color: #ee4c53;
+    border: 1px solid #672e43;
+    text-decoration: none;
+    padding: 2px;
+}
+
+.return a:hover {
+    color: #ee4c53;
+    background-color: #6c199e;
+    border: 1px solid #e5464d;
+    /* font-weight: bold; */
+}
+
+.coin-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+    color: #ee4c53;
+}
+
+.coin-individual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px;
+}
+
+.img-link {
+    height: 150px;
+    width: 150px;
+}

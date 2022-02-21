@@ -10,7 +10,7 @@
         <div class="userlist">
             <% for (const user of publicUsers) { %>
                 <div class="user">
-                    <a href="#"><%=user.username%></a>
+                    <a href="/coins/browse/collection/one/<%=user._id%>"><%=user.username%></a>
                 </div>
             <% } %>
         </div>

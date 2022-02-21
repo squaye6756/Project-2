@@ -152,7 +152,7 @@ router.delete('/:id', isLoggedIn, (req, res) => {
     });
 });
 
-router.get('/browse/browse/browse', (req, res) => {
+router.get('/browse/collections/all', (req, res) => {
     User.find({public:true}, (err, publicUsers) => {
         if (err) {
             console.log(err.message);
@@ -166,4 +166,20 @@ router.get('/browse/browse/browse', (req, res) => {
             );
         }
     });
+});
+
+router.get('/browse/collection/one/:id', (req, res) => {
+    const collectorId = req.params.id;
+    User.findById(collectorId, (err, selectedCollector) => {
+        if (err) {
+            console.log(err.message);
+        } else {
+            res.render(
+                'collector.ejs',
+                {
+                    collector: selectedCollector
+                }
+            )
+        }
+    })
 });

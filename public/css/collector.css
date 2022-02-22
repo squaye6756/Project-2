@@ -28,10 +28,15 @@ body {
     flex-wrap: wrap;
 }
 
-h1 {
+h1, .empty-collection {
     text-align: center;
     font-family: 'Share Tech Mono', monospace;
     color: #ee4c53;
+}
+
+.empty-collection {
+    color: #eed4ab;
+    font-size: 2.5em;
 }
 
 .coin-individual {
